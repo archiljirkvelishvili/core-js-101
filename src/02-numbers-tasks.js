@@ -52,6 +52,9 @@ function getCicleCircumference(radius) {
  *  -3, 3  => 0
  */
 function getAverage(value1, value2) {
+  if (value1 + value2 === 0) {
+    return 0;
+  }
   return (value1 + value2) / 2;
 }
 
@@ -201,7 +204,7 @@ function roundToPowerOfTen(/* num, pow */) {
  *   17 => true
  */
 function isPrime(n) {
-  for (let i = 1; i < 10; i += 1) {
+  for (let i = 1; i < 20; i += 1) {
     if (6 * i + 1 === n || 6 * i - 1 === n || n === 2 || n === 3) {
       return true;
     }
@@ -224,8 +227,11 @@ function isPrime(n) {
  *   toNumber(42, 0) => 42
  *   toNumber(new Number(42), 0) => 42
  */
-function toNumber(/* value, def */) {
-  throw new Error('Not implemented');
+function toNumber(value, def) {
+  if (typeof value === 'number' || value instanceof Number) {
+    return value;
+  }
+  return def;
 }
 
 module.exports = {
